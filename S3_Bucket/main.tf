@@ -36,6 +36,8 @@ resource "aws_s3_object" "my_s3_bucket_data" {
   bucket = aws_s3_bucket.my_s3_bucket.bucket
   key    = "myFile.txt"
   source = "myFile.txt"
+
+  etag = filemd5("myFile.txt")
 }
 
 #S3 Versioning
@@ -44,6 +46,17 @@ resource "aws_s3_bucket_versioning" "my_s3_bucket_versioning" {
 
   versioning_configuration {
     status = "Enabled"
+  }
+}
+
+#Encryption
+resource "aws_s3_bucket_server_side_encryption_configuration" "my_s3_bucket_encryption" {
+  bucket = aws_s3_bucket.my_s3_bucket.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
   }
 }
 
