@@ -1,0 +1,7 @@
+users:
+  - username: RyomenSukuna
+    roles: [AmazonEC2FullAccess]
+  - username: GojoSatoru
+    roles: [AmazonS3ReadOnlyAccess]
+  - username: YujiItadori
+    roles: [AmazonS3ReadOnlyAccess, AmazonEC2FullAccess]
