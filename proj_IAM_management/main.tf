@@ -51,12 +51,12 @@ resource "aws_iam_user_policy_attachment" "attach" {
     policy_arn = "arn:aws:iam::aws:policy/${each.value.role}"
 }
 
-# Output
-output "user_credentials" {
-  value = {
-    for user, u in aws_iam_user_login_profile.profile :
-    user => {
-      password = u.password
-    }
-  }
-}
+# # Output
+# output "user_credentials" {
+#   value = {
+#     for user, u in aws_iam_user_login_profile.profile :
+#     user => {
+#       password = u.password
+#     }
+#   }
+# }
